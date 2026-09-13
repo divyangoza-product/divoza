@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divyang Oza — Product Leader, Talent &amp; People Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --paper-dim:#F2F4F9;
+    --ink:#0F172A;
+    --ink-soft:#4B5568;
+    --line:#E1E5EE;
+    --brass:#4338CA;
+    --brass-soft:#5B54E8;
+    --teal:#0E9D77;
+    --teal-tint:#E5F7F0;
+    --violet:#7C3AED;
+    --pink:#DB2777;
+    --amber:#D97706;
+    --sky:#0284C7;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  a{color:inherit;}
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0; letter-spacing:-0.01em;}
+
+  .layout{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    min-height:100vh;
+  }
+
+  /* ---------- Progress bar ---------- */
+  .progress-bar{
+    position:fixed;
+    top:0; left:0;
+    height:3px;
+    width:0%;
+    background:linear-gradient(90deg, var(--brass) 0%, var(--violet) 45%, var(--pink) 100%);
+    z-index:1000;
+    transition:width .1s ease-out;
+  }
+
+  /* ---------- Top navbar ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:900;
+    background:rgba(255,255,255,0.97);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1040px;
+    margin:0 auto;
+    padding:14px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:17px;
+    color:var(--ink);
+    text-decoration:none;
+    flex-shrink:0;
+  }
+  .topnav{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    flex:1;
+    justify-content:center;
+  }
+  .topnav::-webkit-scrollbar{display:none;}
+  .navlink{
+    text-decoration:none;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    padding:7px 14px;
+    border-radius:20px;
+    white-space:nowrap;
+    transition:background .2s ease, color .2s ease;
+  }
+  .navlink:hover{color:var(--ink);}
+  .navlink.active{
+    color:#fff;
+    background:linear-gradient(120deg, var(--brass) 0%, var(--violet) 100%);
+  }
+  .topbar-cta{
+    flex-shrink:0;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    color:#fff;
+    background:linear-gradient(120deg, var(--pink) 0%, var(--violet) 100%);
+    padding:9px 18px;
+    border-radius:20px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .topbar-cta:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(124,58,237,0.35);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:linear-gradient(120deg, #3730A3 0%, #6D28D9 45%, #BE185D 100%);
+    color:#fff;
+    padding:64px 32px 56px;
+  }
+  .hero-inner{
+    max-width:1040px;
+    margin:0 auto;
+  }
+  .hero .badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:#fff;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.35);
+    padding:5px 11px;
+    border-radius:20px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(36px, 5vw, 54px);
+    font-weight:600;
+    line-height:1.05;
+    color:#fff;
+  }
+  .hero .role{
+    margin-top:16px;
+    font-size:17px;
+    color:rgba(255,255,255,0.88);
+    line-height:1.55;
+    max-width:52ch;
+  }
+  .hero-meta{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    align-items:center;
+  }
+  .hero-meta span{font-size:13.5px; color:rgba(255,255,255,0.75);}
+  .hero-meta a{
+    font-size:13.5px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    border-bottom:1px solid rgba(255,255,255,0.4);
+    padding-bottom:1px;
+  }
+  .hero-meta a:hover{border-color:#fff;}
+
+  /* ---------- Main content ---------- */
+  .content{max-width:1040px; margin:0 auto; padding:64px 32px 40px;}
+  section{margin-bottom:88px; scroll-margin-top:88px;}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    color:var(--brass);
+    margin-bottom:10px;
+  }
+  .kicker::before{content:"— "; color:var(--line);}
+
+  h2.sec-title{
+    font-size:clamp(26px,3vw,32px);
+    font-weight:600;
+    margin-bottom:26px;
+    color:var(--ink);
+  }
+
+  /* About */
+  #about p{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:66ch;
+    margin:0 0 18px;
+  }
+  #about p.lede{
+    font-size:21px;
+    color:var(--ink);
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.45;
+  }
+  #about p.focus{
+    margin-top:24px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:15.5px;
+    color:var(--teal);
+  }
+  #about p.focus b{color:var(--ink); font-weight:600;}
+
+  /* Impact stats */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .stat{
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:26px 20px;
+    background:var(--paper-dim);
+  }
+  .stat .num{
+    font-family:'Fraunces', serif;
+    font-size:clamp(28px,3vw,38px);
+    font-weight:600;
+    color:var(--teal);
+    line-height:1;
+  }
+  .stat .desc{
+    margin-top:10px;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.4;
+  }
+
+  .impl-banner{
+    margin-top:16px;
+    display:flex;
+    align-items:center;
+    gap:26px;
+    background:linear-gradient(120deg, var(--brass) 0%, var(--violet) 60%, var(--pink) 100%);
+    color:#fff;
+    border-radius:14px;
+    padding:28px 32px;
+  }
+  .impl-num{
+    font-family:'Fraunces', serif;
+    font-size:56px;
+    font-weight:700;
+    line-height:1;
+    flex-shrink:0;
+  }
+  .impl-text{flex:1;}
+  .impl-title{font-size:15px; font-weight:600; margin-bottom:13px;}
+  .impl-breakdown{display:flex; flex-wrap:wrap; gap:8px;}
+  .impl-chip{
+    font-size:12.5px;
+    font-weight:600;
+    background:rgba(255,255,255,0.16);
+    border:1px solid rgba(255,255,255,0.35);
+    padding:6px 13px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+
+  /* Beyond Work */
+  .life-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .life-card{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:24px 22px;
+    background:var(--paper-dim);
+  }
+  .life-card .ico{
+    width:38px;
+    height:38px;
+    border-radius:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+    margin-bottom:16px;
+    color:#fff;
+  }
+  .life-card .ico.l1{background:linear-gradient(135deg,#4338CA,#6366F1);}
+  .life-card .ico.l2{background:linear-gradient(135deg,#0E9D77,#34D399);}
+  .life-card .ico.l3{background:linear-gradient(135deg,#B45309,#F59E0B);}
+  .life-card .ico.l4{background:linear-gradient(135deg,#0369A1,#38BDF8);}
+  .life-card .ico.l5{background:linear-gradient(135deg,#BE185D,#F472B6);}
+  .life-card .ico.l6{background:linear-gradient(135deg,#334155,#64748B);}
+  .life-card h4{
+    font-family:'Fraunces', serif;
+    font-size:16px;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 8px;
+  }
+  .life-card p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin:0;
+  }
+
+  /* Companies showcase */
+  .co-wall{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(105px, 1fr));
+    gap:14px;
+  }
+  .co-wall a, .co-wall > div{
+    text-decoration:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    padding:20px 10px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--paper-dim);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .co-wall a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(15,23,42,0.08);
+  }
+  .co-wall .co-badge{width:46px; height:46px; font-size:15px;}
+  .co-wall .w-name{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink);
+    text-align:center;
+  }
+
+  /* Experience */
+  .job{
+    display:grid;
+    grid-template-columns:225px 1fr;
+    gap:28px;
+    padding:28px 0;
+    border-top:1px solid var(--line);
+  }
+  .job:last-child{border-bottom:1px solid var(--line);}
+  .job-meta .dates{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--brass);
+  }
+  .co-head{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    margin-top:9px;
+  }
+  .co-badge{
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.01em;
+    flex-shrink:0;
+    box-shadow:0 2px 6px rgba(15,23,42,0.12);
+    text-shadow:0 1px 2px rgba(0,0,0,0.35);
+  }
+  .co-badge.c1{background:linear-gradient(135deg,#3730A3,#4F46E5);}
+  .co-badge.c2{background:linear-gradient(135deg,#065F46,#059669);}
+  .co-badge.c3{background:linear-gradient(135deg,#075985,#0284C7);}
+  .co-badge.c4{background:linear-gradient(135deg,#115E59,#0D9488);}
+  .co-badge.c5{background:linear-gradient(135deg,#78350F,#B45309);}
+  .co-badge.c6{background:linear-gradient(135deg,#831843,#BE185D);}
+  .co-badge.c7{background:linear-gradient(135deg,#7F1D1D,#B91C1C);}
+  .co-badge.c8{background:linear-gradient(135deg,#1E3A8A,#1D4ED8);}
+  .co-badge.c9{background:linear-gradient(135deg,#14532D,#15803D);}
+  .co-badge.c10{background:linear-gradient(135deg,#7C2D12,#C2410C);}
+  .co-badge.c11{background:linear-gradient(135deg,#4C1D95,#6D28D9);}
+  .co-name{
+    font-family:'Fraunces', serif;
+    font-size:18px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.25;
+  }
+  .job-meta .loc{
+    margin-top:4px;
+    margin-left:51px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .co-info{
+    margin-top:13px;
+    margin-left:51px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .co-info .row{
+    font-size:12px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:6px;
+  }
+  .co-info .row .k{color:#94A0B8; min-width:48px; flex-shrink:0;}
+  .co-info a{color:var(--brass); text-decoration:none; font-weight:600;}
+  .co-info a:hover{text-decoration:underline;}
+  .job-body .title{
+    font-weight:600;
+    font-size:15.5px;
+    margin-bottom:12px;
+    color:var(--ink);
+  }
+  .mini-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .mini-badges a, .mini-badges > div{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:5px 12px 5px 5px;
+  }
+  .mini-badges .co-badge{width:26px; height:26px; font-size:10.5px; border-radius:7px; box-shadow:none;}
+  .mini-badges span{font-size:12.5px; font-weight:600; color:var(--ink-soft);}
+  .mini-badges a:hover{border-color:var(--brass-soft);}
+  .job-body p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:15px;
+    line-height:1.7;
+    max-width:62ch;
+  }
+  .job-body p + p{margin-top:14px;}
+  .job-body p b{color:var(--ink); font-weight:600;}
+
+  /* Skills */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+  }
+  .skill-group .g-title{
+    font-size:13px;
+    font-weight:600;
+    color:var(--teal);
+    margin-bottom:12px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--teal-tint);
+  }
+  .chip-row{display:flex; flex-wrap:wrap; gap:7px;}
+  .chip{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    padding:5px 10px;
+    border-radius:3px;
+  }
+
+  /* Credentials */
+  .cred-cols{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .cred-cols h3{
+    font-size:13px;
+    font-weight:600;
+    color:var(--teal);
+    margin-bottom:14px;
+    font-family:'IBM Plex Sans', sans-serif;
+  }
+  .cred-item{margin-bottom:14px;}
+  .cred-item .t{font-size:14.5px; font-weight:600; color:var(--ink);}
+  .cred-item .s{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+
+  footer{
+    border-top:1px solid var(--line);
+    max-width:1040px;
+    margin:0 auto;
+    padding:36px 32px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* Mobile nav toggle for rail contact links */
+  .mobile-topbar{display:none;}
+
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .hero-inner, main > section:first-of-type{
+    animation:riseIn .6s ease both;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .topbar-inner{padding:12px 20px;}
+    .topnav{justify-content:flex-start;}
+    .hero{padding:48px 20px 40px;}
+    .content{padding:44px 20px 32px;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .impl-banner{flex-direction:column; align-items:flex-start; gap:12px; padding:22px 22px;}
+    .co-wall{grid-template-columns:repeat(3,1fr);}
+    .job{grid-template-columns:1fr; gap:10px;}
+    .skill-groups{grid-template-columns:1fr;}
+    .cred-cols{grid-template-columns:1fr;}
+    .life-grid{grid-template-columns:1fr;}
+    footer{flex-direction:column; gap:10px; align-items:flex-start; padding:28px 24px 40px;}
+  }
+  @media (max-width:600px){
+    .brand{display:none;}
+    .topbar-cta{padding:8px 14px; font-size:12px;}
+  }
+  @media (max-width:520px){
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .co-wall{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">Divyang Oza</a>
+    <nav class="topnav" id="topnav">
+      <a href="#about" class="navlink">About</a>
+      <a href="#impact" class="navlink">Impact</a>
+      <a href="#companies" class="navlink">Companies</a>
+      <a href="#experience" class="navlink">Experience</a>
+      <a href="#skills" class="navlink">Skills</a>
+      <a href="#credentials" class="navlink">Credentials</a>
+      <a href="#beyond" class="navlink">Beyond Work</a>
+    </nav>
+    <a class="topbar-cta" href="mailto:divyangoza@gmail.com">Get in touch</a>
+  </div>
+</header>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="badge">Product Leadership · People Technology</span>
+    <h1>Divyang Oza</h1>
+    <p class="role">Group Product Manager building AI-powered talent &amp; career products at enterprise scale.</p>
+    <div class="hero-meta">
+      <span>San Jose, CA</span>
+      <a href="mailto:divyangoza@gmail.com">divyangoza@gmail.com</a>
+      <a href="tel:2676639087">267-663-9087</a>
+      <a href="http://linkedin.com/in/ozadiv" target="_blank" rel="noopener">linkedin.com/in/ozadiv</a>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+
+  <section id="about">
+      <div class="kicker">About</div>
+      <h2 class="sec-title">Turning HR complexity into products people actually want to use</h2>
+      <p class="lede">I build products at the intersection of People, Product, and Technology — helping organizations transform complex HR processes into intuitive, scalable experiences that make work better for everyone.</p>
+      <p>With 11+ years of experience in People Technology, I've led enterprise HR products from stakeholder discovery and strategy through implementation, adoption, and production at Fortune 500 scale. My work spans Human Capital Management, Talent Acquisition, applicant tracking, workforce planning, and the employee lifecycle — from candidate experience to career development and retention.</p>
+      <p>I'm particularly passionate about the next generation of HR technology: GenAI, LLM-powered workflows, predictive talent intelligence, and AI copilots that help recruiters, hiring managers, and employees get answers and take action — not just navigate another dashboard.</p>
+      <p>I believe great products should deliver measurable business impact, whether that's cost savings, improved efficiency, or stronger adoption. Just as importantly, I believe in building high-performing teams and scalable solutions that continue to create value long after launch.</p>
+      <p class="focus"><b>My focus:</b> Simplify complexity. Build what matters. Deliver impact.</p>
+    </section>
+
+    <section id="impact">
+      <div class="kicker">Impact</div>
+      <h2 class="sec-title">What that's added up to</h2>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="num" style="color:var(--brass);">$54M+</div>
+          <div class="desc">in savings delivered through a 0-to-1 position management product</div>
+        </div>
+        <div class="stat">
+          <div class="num" style="color:var(--pink);">65%</div>
+          <div class="desc">gain in recruiter &amp; hiring manager efficiency from a global ATS launch</div>
+        </div>
+        <div class="stat">
+          <div class="num" style="color:var(--teal);">50%</div>
+          <div class="desc">improvement in FP&amp;A productivity from integrated workforce planning</div>
+        </div>
+        <div class="stat">
+          <div class="num" style="color:var(--amber);">11+</div>
+          <div class="desc">years across product strategy, talent management &amp; HR strategy</div>
+        </div>
+      </div>
+
+      <div class="impl-banner">
+        <div class="impl-num">5</div>
+        <div class="impl-text">
+          <div class="impl-title">Enterprise-Level System Implementations Led End-to-End</div>
+          <div class="impl-breakdown">
+            <span class="impl-chip">3 × Full ATS Suite Implementations</span>
+            <span class="impl-chip">1 × Talent Assessment Tool Implementation</span>
+            <span class="impl-chip">1 × HCM, Payroll &amp; Time &amp; Attendance Implementation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="companies">
+      <div class="kicker">Companies</div>
+      <h2 class="sec-title">Where I've worked</h2>
+      <div class="co-wall">
+        <a href="https://www.servicenow.com" target="_blank" rel="noopener">
+          <div class="co-badge c1">SN</div>
+          <div class="w-name">ServiceNow</div>
+        </a>
+        <a href="https://www.intuit.com" target="_blank" rel="noopener">
+          <div class="co-badge c2">IN</div>
+          <div class="w-name">Intuit</div>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener">
+          <div class="co-badge c3">LI</div>
+          <div class="w-name">LinkedIn</div>
+        </a>
+        <a href="https://christianacare.org" target="_blank" rel="noopener">
+          <div class="co-badge c4">CC</div>
+          <div class="w-name">ChristianaCare</div>
+        </a>
+        <a href="https://www.pennemblem.com" target="_blank" rel="noopener">
+          <div class="co-badge c5">PE</div>
+          <div class="w-name">Penn Emblem</div>
+        </a>
+        <a href="https://www.davidsbridal.com" target="_blank" rel="noopener">
+          <div class="co-badge c6">DB</div>
+          <div class="w-name">David's Bridal</div>
+        </a>
+        <a href="https://www.pizzahut.com" target="_blank" rel="noopener">
+          <div class="co-badge c7">PH</div>
+          <div class="w-name">Pizza Hut</div>
+        </a>
+        <a href="https://www.bankofamerica.com" target="_blank" rel="noopener">
+          <div class="co-badge c8">BA</div>
+          <div class="w-name">Bank of America</div>
+        </a>
+        <a href="https://www.td.com/us/en/personal-banking" target="_blank" rel="noopener">
+          <div class="co-badge c9">TD</div>
+          <div class="w-name">TD Bank</div>
+        </a>
+        <a href="https://www.peco.com" target="_blank" rel="noopener">
+          <div class="co-badge c10">PC</div>
+          <div class="w-name">Exelon PECO</div>
+        </a>
+        <div>
+          <div class="co-badge c11">VF</div>
+          <div class="w-name">Valley Forge Asset Mgmt</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="kicker">Experience</div>
+      <h2 class="sec-title">The journey so far</h2>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">Sep 2022 — Present</div>
+          <div class="co-head">
+            <div class="co-badge c1">SN</div>
+            <div class="co-name">ServiceNow</div>
+          </div>
+          <div class="loc">Santa Clara, CA</div>
+          <div class="co-info">
+            <div class="row"><span class="k">Industry</span>Enterprise Cloud Software</div>
+            <div class="row"><span class="k">Size</span>29,000+ employees</div>
+            <div class="row"><a href="https://www.servicenow.com" target="_blank" rel="noopener">servicenow.com ↗</a></div>
+          </div>
+        </div>
+        <div class="job-body">
+          <div class="title">Senior Manager, People Technology Product</div>
+          <p>By 2022, I had stepped into a senior leadership role at ServiceNow, taking ownership of the company's recruiting technology strategy and helping shape the future of how we hire. One of my biggest challenges was finding the right platform to support that vision. I led the journey from writing the RFP to evaluating vendors and selecting <b>Avature as our future applicant tracking system</b>, bringing together HR, Product, Engineering, and Procurement to rethink the experience for recruiters, hiring managers, and candidates.</p>
+          <p>At the same time, I saw an opportunity to connect two worlds that had traditionally operated separately: workforce planning and recruiting. I led the development of a <b>0-to-1 position management product</b> that brought those systems together for the first time, delivering <b>$54M+ in savings</b> and a <b>50% improvement in FP&amp;A productivity</b>. As AI began reshaping the way we think about work, I partnered on <b>BudgetID Agent</b>, helping recruiters get self-service answers to budget and headcount questions that once required days of back-and-forth.</p>
+          <p>My work also extended beyond platforms and products. I helped carry talent strategy through eight acquisitions — including Moveworks, Armis, Veza, data.world, Logik.ai, Hitch, LightStep, and Element AI — improving onboarding efficiency by <b>35%</b> across newly integrated teams. I embraced generative AI tools such as Claude to accelerate everything from requirements discovery to UI prototyping, and I built and grew a multidisciplinary team of TPMs, analysts, and architects who could turn ambitious ideas into practical, scalable solutions.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">Apr 2020 — Sep 2022</div>
+          <div class="co-head">
+            <div class="co-badge c1">SN</div>
+            <div class="co-name">ServiceNow</div>
+          </div>
+          <div class="loc">Santa Clara, CA</div>
+          <div class="co-info">
+            <div class="row"><span class="k">Industry</span>Enterprise Cloud Software</div>
+            <div class="row"><span class="k">Size</span>29,000+ employees</div>
+            <div class="row"><a href="https://www.servicenow.com" target="_blank" rel="noopener">servicenow.com ↗</a></div>
+          </div>
+        </div>
+        <div class="job-body">
+          <div class="title">Staff Business Systems Analyst (Product Lead)</div>
+          <p>My journey at ServiceNow began with a different kind of challenge: taking ownership of the company's Talent Acquisition technology portfolio and transforming it into a more connected, scalable, and reliable product ecosystem. I worked across platforms, compliance, integrations, and roadmap strategy, always looking for ways to make recruiting technology work better for the people who depended on it.</p>
+          <p>The defining project of this chapter was leading the global <b>0-to-1 implementation of SmartRecruiters ATS</b>. It was a major transformation that touched recruiting teams around the world and ultimately improved recruiter and hiring manager efficiency by <b>65%</b>. But launching the platform was only the beginning. I continued expanding its capabilities through automation and integrations, delivering another <b>25% improvement in recruiter and coordinator productivity</b>.</p>
+          <p>I also partnered closely with Legal and Information Security on global <b>OFCCP and GDPR compliance</b>, ensuring that the technology could support both business growth and the responsibilities that come with managing sensitive talent data. Through process mining and a closer look at recruiting workflows, I helped reduce average time-to-hire from <b>90 days to 65 days</b>. This experience reinforced something I still believe today: the best HR technology is the kind that quietly removes friction from people's work while creating measurable value for the business.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">May 2019 — Apr 2020</div>
+          <div class="co-head">
+            <div class="co-badge c2">IN</div>
+            <div class="co-name">Intuit</div>
+          </div>
+          <div class="loc">Mountain View, CA</div>
+          <div class="co-info">
+            <div class="row"><span class="k">Industry</span>Financial Software (Fintech)</div>
+            <div class="row"><span class="k">Size</span>19,000+ employees</div>
+            <div class="row"><a href="https://www.intuit.com" target="_blank" rel="noopener">intuit.com ↗</a></div>
+          </div>
+        </div>
+        <div class="job-body">
+          <div class="title">Senior Business Systems Analyst</div>
+          <p>Before joining ServiceNow, I spent a year at Intuit working at the intersection of HR and Engineering. My role was to translate the needs of Recruiting leadership into clear product requirements, practical roadmaps, and technology solutions that engineering teams could deliver.</p>
+          <p>A significant part of my work focused on keeping talent data reliable as it moved across <b>iCIMS, Workday, and Boomi</b>. I worked on the integrations and underlying processes that connected recruiting to the broader employee lifecycle, making sure the right information reached the right systems at the right time.</p>
+          <p>I also led automation initiatives that reduced manual effort and gave analysts more time to focus on strategic work. It was an important chapter in my development as a product leader: learning that good technology isn't simply about building new capabilities. It's about understanding where people lose time, identifying what can be improved, and creating solutions that make the entire operation more effective.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">Feb 2018 — Feb 2019</div>
+          <div class="co-head">
+            <div class="co-badge c3">LI</div>
+            <div class="co-name">LinkedIn</div>
+          </div>
+          <div class="loc">Sunnyvale, CA</div>
+          <div class="co-info">
+            <div class="row"><span class="k">Industry</span>Professional Networking</div>
+            <div class="row"><span class="k">Size</span>20,000+ employees</div>
+            <div class="row"><a href="https://www.linkedin.com" target="_blank" rel="noopener">linkedin.com ↗</a></div>
+          </div>
+        </div>
+        <div class="job-body">
+          <div class="title">Senior HRIT Systems Analyst</div>
+          <p>My time at LinkedIn was where I began developing a deeper technical understanding of talent technology and the role it could play in shaping the employee experience. I led the end-to-end implementation of <b>Pymetrics</b>, integrating talent assessment technology with Jobvite ATS and Workday.</p>
+          <p>The project brought together product thinking, technical delivery, and close collaboration across internal engineering teams and external technology partners. I also partnered with Core Engineering to build a custom API layer for Jobvite, helping extend the platform's capabilities beyond its out-of-the-box functionality.</p>
+          <p>Alongside the implementation work, I led <b>GDPR compliance initiatives for the ATS</b> and helped drive Agile delivery across multiple teams. This was where I really began to appreciate the craft of building technology at technical depth — understanding not just what a product should do, but how the systems, integrations, and people behind it all need to work together.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">Jan 2018 — Feb 2018</div>
+          <div class="co-head">
+            <div class="co-badge c4">CC</div>
+            <div class="co-name">ChristianaCare</div>
+          </div>
+          <div class="loc">Newark, DE</div>
+          <div class="co-info">
+            <div class="row"><span class="k">Industry</span>Hospital &amp; Healthcare System</div>
+            <div class="row"><span class="k">Size</span>11,000+ employees</div>
+            <div class="row"><a href="https://christianacare.org" target="_blank" rel="noopener">christianacare.org ↗</a></div>
+          </div>
+        </div>
+        <div class="job-body">
+          <div class="title">Workday Configuration Analyst</div>
+          <p>Just before LinkedIn, I spent a short but intense stretch at Christiana Care Health System as a Workday Configuration Analyst, providing configuration and analytical support across <b>HCM, Benefits, Payroll, and Absence Management</b> for a workforce of <b>10,000+ employees</b>. I built advanced custom reports using Workday Reports-as-a-Service (RaaS), calculated fields, and web services to turn raw HR data into compliance reporting and workforce analytics leadership could actually use, and designed interactive dashboards that gave executives real-time visibility into their workforce.</p>
+          <p>I configured automated alert notifications so managers were notified the moment a report completed, a data threshold was crossed, or a critical HR event occurred, and partnered closely with HR, Payroll, and IT to translate business requirements into scalable Workday configurations — testing and validating through <b>bi-annual release cycles</b> to keep upgrades seamless. It was a deep dive into Workday's technical architecture, business process framework, and security model that sharpened how I thought about designing HR systems around the people who actually use them.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">Sep 2017 — Dec 2017</div>
+          <div class="co-head">
+            <div class="co-badge c5">PE</div>
+            <div class="co-name">Penn Emblem</div>
+          </div>
+          <div class="loc">Feasterville-Trevose, PA</div>
+          <div class="co-info">
+            <div class="row"><span class="k">Industry</span>Textile Manufacturing</div>
+            <div class="row"><span class="k">Size</span>201–500 employees</div>
+            <div class="row"><a href="https://www.pennemblem.com" target="_blank" rel="noopener">pennemblem.com ↗</a></div>
+          </div>
+        </div>
+        <div class="job-body">
+          <div class="title">Information Technology Business Analyst</div>
+          <p>Right after David's Bridal, I spent a few months at Penn Emblem as an IT Business Analyst, partnering with stakeholders to pick apart existing workflows and find where operational efficiency was breaking down. Working with the IT team, I helped design and implement automation for manual tasks, improving issue resolution rates by <b>30%</b> and cutting response time on business-critical requests.</p>
+          <p>I ran SQL queries directly against enterprise databases to support reporting, troubleshooting, and business intelligence initiatives, and built a centralized SharePoint project management site with real-time issue tracking and timeline dashboards that gave cross-functional teams far better visibility. I also kept watch over daily <b>SAP EDI</b> processes to make sure invoice jobs ran cleanly and vendor payments stayed on track, acting as the connective tissue between business users and technical teams throughout.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">Sep 2012 — Sep 2017</div>
+          <div class="co-head">
+            <div class="co-badge c6">DB</div>
+            <div class="co-name">David's Bridal</div>
+          </div>
+          <div class="loc">Conshohocken, PA</div>
+          <div class="co-info">
+            <div class="row"><span class="k">Industry</span>Specialty Retail (Bridal)</div>
+            <div class="row"><span class="k">Size</span>5,000+ employees</div>
+            <div class="row"><a href="https://www.davidsbridal.com" target="_blank" rel="noopener">davidsbridal.com ↗</a></div>
+          </div>
+        </div>
+        <div class="job-body">
+          <div class="title">Business Systems Analyst</div>
+          <p>My first major systems-building role was at David's Bridal, where I served as the Product and Implementation Lead for the company's first global rollout of <b>Ceridian Dayforce HCM</b>. It was an opportunity to work across business processes, technology, and people on a truly enterprise-wide transformation.</p>
+          <p>I led discovery, gap analysis, and legacy system retirement across domestic and international markets, helping design an integrated HCM ecosystem with <b>more than 20 system integrations</b>. The work improved operational productivity by <b>30%</b>, but the experience gave me something even more valuable: an appreciation for how much a well-designed system can change the way people experience work.</p>
+          <p>It was here that I started developing the foundation of my approach to product leadership — listen carefully, understand the real problem, connect the dots across systems, and build something that makes people's jobs easier.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-meta">
+          <div class="dates">Age 15 — College</div>
+          <div class="co-head">
+            <div class="co-badge c6" style="background:linear-gradient(135deg,#334155,#475569);">✦</div>
+            <div class="co-name">Where It Started</div>
+          </div>
+          <div class="loc">Philadelphia area, PA</div>
+        </div>
+        <div class="job-body">
+          <div class="title">Early Career — Learning How to Understand People</div>
+          <div class="mini-badges">
+            <a href="https://www.pizzahut.com" target="_blank" rel="noopener"><div class="co-badge c7">PH</div><span>Pizza Hut</span></a>
+            <a href="https://www.bankofamerica.com" target="_blank" rel="noopener"><div class="co-badge c8">BA</div><span>Bank of America</span></a>
+            <a href="https://www.td.com/us/en/personal-banking" target="_blank" rel="noopener"><div class="co-badge c9">TD</div><span>TD Bank</span></a>
+            <div><div class="co-badge c11">VF</div><span>Valley Forge Asset Mgmt</span></div>
+            <a href="https://www.peco.com" target="_blank" rel="noopener"><div class="co-badge c10">PC</div><span>Exelon PECO</span></a>
+          </div>
+          <p>Long before I started building HR technology, I was learning the fundamentals of understanding people.</p>
+          <p>At 15, I took my first job at <b>Pizza Hut</b>. It was a simple environment, but it taught me something that has stayed with me throughout my career: people don't always tell you exactly what they need. Sometimes you have to listen carefully, read the situation, and figure out how to deliver the right experience — especially when the dinner rush is in full swing.</p>
+          <p>In college, I worked in retail banking at <b>Bank of America</b> and later <b>TD Bank</b>, where I began building genuine relationships with customers and helping them find financial products aligned with their goals. It was my first real exposure to translating someone's needs into a solution that made sense for them.</p>
+          <p>A six-month co-op as a <b>Compliance Analyst at Valley Forge Asset Management</b> introduced me to corporate structures, legal teams, investment advisors, and the inner workings of financial products. I learned how important it is to understand the rules, the risks, and the details behind the systems people rely on.</p>
+          <p>Later, during a six-month stint on the technology team at <b>Exelon PECO</b>, I helped convert paper-based utility field maps into digital maps and trained frontline linemen to use Panasonic Toughbooks and the new technology in the field. It was an early lesson in digital transformation — because building a new system is only part of the job. The real impact comes when people can understand it, trust it, and use it to do their work better.</p>
+          <p>Different industries. Different problems. Different people.<br>But the thread connecting all of those experiences has remained the same: <b>understand what people actually need, then build or explain the thing that helps them get there.</b></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="kicker">Skills</div>
+      <h2 class="sec-title">The toolkit</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <div class="g-title">Product &amp; Strategy</div>
+          <div class="chip-row">
+            <span class="chip">Product Strategy</span>
+            <span class="chip">Group Product Management</span>
+            <span class="chip">0-to-1 Launches</span>
+            <span class="chip">Opportunity Solution Trees</span>
+            <span class="chip">Modern Product Discovery</span>
+            <span class="chip">Product Life-Cycle Management</span>
+            <span class="chip">Success Metrics &amp; Continuous Improvement</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="g-title">HR &amp; Talent Platforms</div>
+          <div class="chip-row">
+            <span class="chip">Avature</span>
+            <span class="chip">Smart Recruiters (SAP)</span>
+            <span class="chip">iCIMS</span>
+            <span class="chip">Jobvite</span>
+            <span class="chip">Taleo</span>
+            <span class="chip">Greenhouse</span>
+            <span class="chip">Workday</span>
+            <span class="chip">Ceridian Dayforce</span>
+            <span class="chip">ServiceNow HR</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="g-title">AI, Data &amp; Planning</div>
+          <div class="chip-row">
+            <span class="chip">GenAI / LLM Product Roadmaps</span>
+            <span class="chip">Predictive Talent Intelligence</span>
+            <span class="chip">Talent Data Lakes &amp; Architecture</span>
+            <span class="chip">Pigment</span>
+            <span class="chip">Anaplan</span>
+            <span class="chip">Pymetrics / Harver</span>
+            <span class="chip">HackerRank</span>
+            <span class="chip">Process Mining &amp; Analytics</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="g-title">Leadership &amp; Compliance</div>
+          <div class="chip-row">
+            <span class="chip">Cross-Functional Influence</span>
+            <span class="chip">Executive Stakeholder Communication</span>
+            <span class="chip">Team Building</span>
+            <span class="chip">Employee Lifecycle Systems</span>
+            <span class="chip">OFCCP / GDPR Compliance</span>
+            <span class="chip">Executive Recruiting</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials">
+      <div class="kicker">Credentials</div>
+      <h2 class="sec-title">Education, certifications &amp; recognition</h2>
+      <div class="cred-cols">
+        <div>
+          <h3>Education</h3>
+          <div class="cred-item">
+            <div class="t">B.S., Management Information Systems</div>
+            <div class="s">Business Administration concentration — Drexel University, Philadelphia, PA</div>
+          </div>
+          <h3 style="margin-top:26px;">Certifications</h3>
+          <div class="cred-item">
+            <div class="t">Applied AI for Digital Transformation</div>
+            <div class="s">MIT Professional Education, 2026</div>
+          </div>
+          <div class="cred-item">
+            <div class="t">Smart Recruiters (SAP) Administrator</div>
+            <div class="s">2021</div>
+          </div>
+          <div class="cred-item">
+            <div class="t">Querying Data with Transact-SQL</div>
+            <div class="s">Microsoft Certificate of Achievement</div>
+          </div>
+        </div>
+        <div>
+          <h3>Recognition</h3>
+          <div class="cred-item">
+            <div class="t">ServiceNow Quarterly CIO Award</div>
+            <div class="s">3x recipient — Sep 2020, Dec 2021, Nov 2022</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beyond">
+      <div class="kicker">Beyond Work</div>
+      <h2 class="sec-title">What keeps me curious outside the office</h2>
+      <div class="life-grid">
+        <div class="life-card">
+          <div class="ico l1">📚</div>
+          <h4>Always Learning</h4>
+          <p>I stay closely tuned to current events and make a habit of researching new technologies and business trends — I'm rarely without something new to read or dig into.</p>
+        </div>
+        <div class="life-card">
+          <div class="ico l4">🤖</div>
+          <h4>New Technology</h4>
+          <p>I like getting hands-on with what's next in tech before it hits the mainstream, and following how it's reshaping the way companies and industries operate.</p>
+        </div>
+        <div class="life-card">
+          <div class="ico l3">₿</div>
+          <h4>Crypto &amp; Digital Assets</h4>
+          <p>I follow the crypto and digital asset space closely, learning how blockchain and decentralized finance continue to evolve.</p>
+        </div>
+        <div class="life-card">
+          <div class="ico l2">🏠</div>
+          <h4>Real Estate Investing</h4>
+          <p>I've started building a real estate portfolio, learning the fundamentals of property investment as a path to long-term wealth building.</p>
+        </div>
+        <div class="life-card">
+          <div class="ico l5">🤝</div>
+          <h4>Giving Back</h4>
+          <p>I look for ways to give back to my community, contributing time and support to causes and organizations that matter to me.</p>
+        </div>
+        <div class="life-card">
+          <div class="ico l6">👨‍👩‍👧</div>
+          <h4>Family First</h4>
+          <p>Supporting my aging parents is a priority — it keeps me grounded and reminds me what really matters outside of work.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+<footer>
+  <span>Divyang Oza — San Jose, CA</span>
+  <span>divyangoza@gmail.com · 267-663-9087 · linkedin.com/in/ozadiv</span>
+</footer>
+
+<script>
+  // Scroll progress bar
+  const progressBar = document.getElementById('progressBar');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // Active nav link tracking
+  const navLinks = Array.from(document.querySelectorAll('.navlink'));
+  const sections = navLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  function setActive(id){
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          setActive(entry.target.id);
+        }
+      });
+    }, {rootMargin:'-40% 0px -50% 0px', threshold:0});
+    sections.forEach(sec => observer.observe(sec));
+  }
+</script>
+</body>
+</html>
